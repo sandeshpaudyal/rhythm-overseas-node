@@ -1,0 +1,115 @@
+import Joi from "@hapi/joi";
+
+import validate from "../utils/validate";
+
+// password validation pattern
+const pattern =
+  /^(?=.*[\d])(?=.*[!@#$%^&*])(?=.*[A-Z])[a-zA-Z0-9!@#$%^&*]{8,}$/;
+
+const createUserSchema = Joi.object({
+  name: Joi.string().label("Name").max(225).required(),
+  email: Joi.string().label("Email").required(),
+  password: Joi.string().label("Password").regex(pattern).required().messages({
+    "string.pattern.base": `Given password doesn't match the requirement`,
+  }),
+  confirm_password: Joi.string()
+    .label("Confirm Password")
+    .valid(Joi.ref("password"))
+    .required(),
+  phone: Joi.string().label("Phone").max(20).optional(),
+  status: Joi.boolean().label("Status").optional(),
+  image_url: Joi.string().label("Image").optional(),
+  reset_token: Joi.string().label("Token").optional(),
+  role_id: Joi.string()
+    .guid({ version: "uuidv4" })
+    .label("Role")
+    .required()
+    .messages({
+      "string.base": `Role id should be a valid uuid v4`,
+    }),
+});
+
+const updateUserSchema = Joi.object({
+  name: Joi.string().label("Name").max(225).optional(),
+  email: Joi.string().label("Email").optional(),
+  phone: Joi.string().label("Phone").max(20).optional(),
+  status: Joi.boolean().label("Status").optional(),
+  image_url: Joi.string().label("Image").optional(),
+  role_id: Joi.string().guid({ version: "uuidv4" }).label("Role").optional(),
+});
+
+const forgotPasswordSchema = Joi.object({
+  email: Joi.string().label("Email").required(),
+  base_url: Joi.string().label("URL").required(),
+});
+
+const resetPasswordSchema = Joi.object({
+  token: Joi.string().label("Reset Token").required(),
+  password: Joi.string().label("Password").regex(pattern).required(),
+  confirm_password: Joi.string()
+    .label("Confirm Password")
+    .valid(Joi.ref("password"))
+    .required(),
+});
+
+/**
+ * Validate create user request.
+ *
+ * @param   {Object}   req
+ * @param   {Object}   res
+ * @param   {Function} next
+ * @returns {Promise}
+ */
+async function userInsertValidator(req, res, next) {
+  return validate(req.body, createUserSchema)
+    .then(() => next())
+    .catch((err) => next(err));
+}
+
+/**
+ * Validate update user request.
+ *
+ * @param   {Object}   req
+ * @param   {Object}   res
+ * @param   {Function} next
+ * @returns {Promise}
+ */
+async function userUpdateValidator(req, res, next) {
+  return validate(req.body, updateUserSchema)
+    .then(() => next())
+    .catch((err) => next(err));
+}
+
+/**
+ * Validate forgot password request.
+ *
+ * @param   {Object}   req
+ * @param   {Object}   res
+ * @param   {Function} next
+ * @returns {Promise}
+ */
+async function forgotPasswordValidator(req, res, next) {
+  return validate(req.body, forgotPasswordSchema)
+    .then(() => next())
+    .catch((err) => next(err));
+}
+
+/**
+ * Validate reset password request.
+ *
+ * @param   {Object}   req
+ * @param   {Object}   res
+ * @param   {Function} next
+ * @returns {Promise}
+ */
+async function resetPasswordValidator(req, res, next) {
+  return validate(req.body, resetPasswordSchema)
+    .then(() => next())
+    .catch((err) => next(err));
+}
+export {
+  userInsertValidator,
+  userUpdateValidator,
+  forgotPasswordValidator,
+  resetPasswordValidator,
+};
