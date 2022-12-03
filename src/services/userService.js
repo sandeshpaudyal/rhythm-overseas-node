@@ -1,9 +1,8 @@
-import { User } from './../models';
-import logger from '../utils/logger';
-import constants from '../constants/constants';
+import { User } from "./../models";
+import logger from "../utils/logger";
+import constants from "../constants/constants";
 
-const { v4: uuidv4 } = require('uuid');
-
+const { v4: uuidv4 } = require("uuid");
 
 /**
  * Get all users.
@@ -11,17 +10,17 @@ const { v4: uuidv4 } = require('uuid');
  * @returns {Promise}
  */
 export function getAllUsers() {
-    return User.findAll({ where: { status: constants.STATUS_TRUE } });
+  return User.findAll({ where: { status: constants.STATUS_TRUE } });
 }
 
 /**
  * Get a user.
  *
- * @param   {Number}  id
+ * @param   {String}  id
  * @returns {Promise}
  */
 export function getUser(id) {
-    return User.findByPk(id)
+  return User.findByPk(id);
 }
 
 /**
@@ -32,31 +31,31 @@ export function getUser(id) {
  */
 
 export async function createUser(body) {
-    return await User.build(body)
-        .save()
-        .then((data) => data)
-        .catch((err) => {
-            logger.error('Error on creating new user ', err);
-        });
+  return await User.build(body)
+    .save()
+    .then((data) => data)
+    .catch((err) => {
+      logger.error("Error on creating new user ", err);
+    });
 }
 
 /**
  * Update a user.
  *
- * @param   {Number}  id
+ * @param   {String}  id
  * @param   {Object}  body
  * @returns {Promise}
  */
 export async function updateUser(id, body) {
-    return await User.update(body, {
-        where: {
-            id
-        }
-    })
-        .then((data) => data)
-        .catch((err) => {
-            logger.error('Error on creating new user ', err);
-        });
+  return await User.update(body, {
+    where: {
+      id,
+    },
+  })
+    .then((data) => data)
+    .catch((err) => {
+      logger.error("Error on creating new user ", err);
+    });
 }
 
 /**
@@ -66,27 +65,25 @@ export async function updateUser(id, body) {
  * @returns {Promise}
  */
 export function getUserbyEmail(email) {
-    return User.findOne({
-        where: {
-            email,
-        },
-    })
+  return User.findOne({
+    where: {
+      email,
+    },
+  });
 }
-
 
 /**
  * change user password
  *
- * @param   {Number}  id
+ * @param   {String}  id
  * @param   {String}  email
  * @returns {Promise}
  */
 export async function changePassword(id, password) {
-    const user = await User.findOne({ where: { id } });
+  const user = await User.findOne({ where: { id } });
 
-    return user.update({ password })
+  return user.update({ password });
 }
-
 
 /**
  * forgot password
@@ -95,13 +92,10 @@ export async function changePassword(id, password) {
  * @returns {Promise}
  */
 export async function forgotPassword(userToRecover) {
+  const resetToken = uuidv4();
 
-    const resetToken = uuidv4();
-
-    return userToRecover.update({ reset_token: resetToken })
-
+  return userToRecover.update({ reset_token: resetToken });
 }
-
 
 /**
  * reset password
@@ -111,6 +105,5 @@ export async function forgotPassword(userToRecover) {
  * @returns {Promise}
  */
 export async function resetPassword(userDetail, password) {
-    return userDetail.update({ reset_token: null, password })
-
+  return userDetail.update({ reset_token: null, password });
 }
