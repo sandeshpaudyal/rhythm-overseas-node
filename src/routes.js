@@ -20,6 +20,21 @@ router.get("/", (req, res) => {
   });
 });
 
+/**
+ * GET /api/health
+ */
+router.get("/health-check", (req, res) => {
+  const healthcheck = {
+    message: "OK",
+  };
+  try {
+    res.send(healthcheck);
+  } catch (e) {
+    healthcheck.message = e;
+    res.status(503).send();
+  }
+});
+
 router.use("/users", userRoutes);
 router.use("/auth", authRoutes);
 router.use("/clients", clientRoutes);
