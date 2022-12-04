@@ -1,6 +1,19 @@
 version: "3.7"
 
 services:
+  rhythm-db:
+    container_name: rhythm-db
+    image: mysql
+    restart: always
+    environment:
+      - MYSQL_PASSWORD=password
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=rhythm
+    volumes:
+      - db-config:/etc/mysql
+      - db-data:/var/lib/mysql
+    ports:
+      - 3307:3306
   api:
     container_name: rhythm-node
     restart: always
@@ -12,3 +25,11 @@ services:
       - ./uploads:/app/uploads/
     ports:
       - 3011:3011
+    depends_on:
+      - rhythm-db
+    links:
+      - rhythm-db
+
+volumes:
+  db-config:
+  db-data:
