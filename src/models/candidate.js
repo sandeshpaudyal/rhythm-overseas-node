@@ -29,17 +29,57 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: true,
       },
+      pp_size_photo_url: {
+        type: DataTypes.VIRTUAL,
+        get() {
+          return this.getDataValue("pp_size_photo")
+            ? `https://insta.outcodetest.com/${this.getDataValue(
+                "pp_size_photo"
+              )}`
+            : null;
+        },
+      },
       full_size_photo: {
         type: DataTypes.STRING,
         allowNull: true,
+      },
+      full_size_photo_url: {
+        type: DataTypes.VIRTUAL,
+        get() {
+          return this.getDataValue("full_size_photo")
+            ? `https://insta.outcodetest.com/${this.getDataValue(
+                "full_size_photo"
+              )}`
+            : null;
+        },
       },
       passport_front: {
         type: DataTypes.STRING,
         allowNull: true,
       },
+      passport_front_url: {
+        type: DataTypes.VIRTUAL,
+        get() {
+          return this.getDataValue("passport_front")
+            ? `https://insta.outcodetest.com/${this.getDataValue(
+                "passport_front"
+              )}`
+            : null;
+        },
+      },
       passport_back: {
         type: DataTypes.STRING,
         allowNull: true,
+      },
+      passport_back_url: {
+        type: DataTypes.VIRTUAL,
+        get() {
+          return this.getDataValue("passport_back")
+            ? `https://insta.outcodetest.com/${this.getDataValue(
+                "passport_back"
+              )}`
+            : null;
+        },
       },
       province: {
         type: DataTypes.STRING,
@@ -72,6 +112,14 @@ module.exports = (sequelize, DataTypes) => {
       cv: {
         type: DataTypes.STRING,
         allowNull: false,
+      },
+      cv_url: {
+        type: DataTypes.VIRTUAL,
+        get() {
+          return this.getDataValue("cv")
+            ? `https://insta.outcodetest.com/${this.getDataValue("cv")}`
+            : null;
+        },
       },
       job_description: {
         type: DataTypes.TEXT,
