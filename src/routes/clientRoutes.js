@@ -22,12 +22,7 @@ router.get("/:id", ClientController.show);
 /**
  * POST /api/clients
  */
-router.post(
-  "/",
-  validateAuthUser,
-  clientInsertValidator,
-  ClientController.createClient
-);
+router.post("/", clientInsertValidator, ClientController.createClient);
 
 /**
  * PUT /api/clients/:id

@@ -62,7 +62,6 @@ const updateCandidateSchema = Joi.object({
  * @returns {Promise}
  */
 async function candidateInsertValidator(req, res, next) {
-  console.log("req.quer==================================", req.body);
   return validate(req.body, createCandidateSchema)
     .then(() => next())
     .catch((err) => next(err));

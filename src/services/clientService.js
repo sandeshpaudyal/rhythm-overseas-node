@@ -66,3 +66,14 @@ export function getClientbyField(field) {
     where: field,
   });
 }
+
+/**
+ * get total count of available clients
+ * @param {Object} filterBody
+ * @returns {Promise}
+ */
+export async function getAllClientsCount() {
+  return Client.count({
+    distinct: true,
+  });
+}

@@ -8,20 +8,38 @@ import {
 import {
   createClient,
   getAllClients,
+  getAllClientsCount,
   getClient,
-  getClientbyEmail,
   getClientbyField,
   updateClient,
 } from "../services/clientService";
 import logger from "../utils/logger";
+import { getMetaDetail } from "../utils/reusableUtils";
 
 const clientsController = {
   /**
    * List of Client
    */
   async fetchAll(req, res, next) {
+    let query = {};
+
+    let { page: pageNo, limit } = req.query;
+    // set default or given casted page No and limit (per page)
+    pageNo = pageNo ? Number(pageNo) : 1;
+    limit = limit ? Number(limit) : Number(process.env.APP_PER_PAGE);
+
+    // const filterBody = await filterUser(req.query);
+
+    const totalCount = await getAllClientsCount();
+
+    // build query for pagination
+    query.skip = Number((pageNo - 1) * limit);
+    query.limit = Number(limit);
+
+    let meta = await getMetaDetail(pageNo, limit, totalCount);
+
     getAllClients()
-      .then((data) => res.json({ data }))
+      .then((data) => res.json({ data, meta }))
       .catch((err) => {
         logger.error(customMessages.ERROR_LISTING_CLIENTS);
         next(err);

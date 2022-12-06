@@ -132,3 +132,14 @@ export function getCandidatebyField(field) {
     where: field,
   });
 }
+
+/**
+ * get total count of available candidates
+ * @param {Object} filterBody
+ * @returns {Promise}
+ */
+export async function getAllCandidatesCount() {
+  return Candidate.count({
+    distinct: true,
+  });
+}

@@ -22,12 +22,7 @@ router.get("/:id", CandidateController.show);
 /**
  * POST /api/candidates
  */
-router.post(
-  "/",
-  validateAuthUser,
-  candidateInsertValidator,
-  CandidateController.createCandidate
-);
+router.post("/", candidateInsertValidator, CandidateController.createCandidate);
 
 /**
  * PUT /api/candidates/:id
