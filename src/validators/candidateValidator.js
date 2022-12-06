@@ -23,11 +23,11 @@ const createCandidateSchema = Joi.object({
   job_description: Joi.string().label("Job Description").required(),
   country_willing: Joi.string().label("Country Willing").required(),
   previous_experience: Joi.string().label("Previous Experiences").required(),
-  // pp_size_photo: Joi.string().label("Passport Size Image").required(),
-  // full_size_photo: Joi.string().label("Full Size Image").required(),
-  // passport_front: Joi.string().label("Passport Front").required(),
-  // passport_back: Joi.string().label("Passport Back").required(),
-  // cv: Joi.string().label("CV").required(),
+  pp_size_photo: Joi.string().label("Passport Size Image").optional(),
+  full_size_photo: Joi.string().label("Full Size Image").optional(),
+  passport_front: Joi.string().label("Passport Front").optional(),
+  passport_back: Joi.string().label("Passport Back").optional(),
+  cv: Joi.string().label("CV").optional(),
 });
 
 const updateCandidateSchema = Joi.object({
@@ -51,6 +51,11 @@ const updateCandidateSchema = Joi.object({
   job_description: Joi.string().label("Job Description").optional(),
   country_willing: Joi.string().label("Country Willing").optional(),
   previous_experience: Joi.string().label("Previous Experiences").optional(),
+  pp_size_photo: Joi.string().label("Passport Size Image").optional(),
+  full_size_photo: Joi.string().label("Full Size Image").optional(),
+  passport_front: Joi.string().label("Passport Front").optional(),
+  passport_back: Joi.string().label("Passport Back").optional(),
+  cv: Joi.string().label("CV").optional(),
 });
 
 /**
