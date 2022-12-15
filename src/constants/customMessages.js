@@ -42,6 +42,23 @@ const customMessages = {
   // email body
   EMAIL_BODY_RESET_SUCCESS:
     "Your email was successfully reset. Feel free to login and continue with your work.",
+
+  // important links
+  ERROR_LISTING_IMPORTANT_LINKSS: "Error on listing important links.",
+  ERROR_FETCHING_IMPORTANT_LINKS_ID:
+    "Error while fetching important link with ID.",
+  ERROR_CREATING_IMPORTANT_LINKS: "Error while creating new important link.",
+  NO_IMPORTANT_LINKS_FOUND: "No important link found.",
+  SUCCESS_IMPORTANT_LINKS_UPDATE: "Important link updated successfully.",
+  FAILURE_IMPORTANT_LINKS_UPDATE: "Important link update failed.",
+
+  // feedbacks
+  ERROR_LISTING_FEEDBACKS: "Error on listing feedbacks.",
+  ERROR_FETCHING_FEEDBACK_ID: "Error while fetching feedback with ID.",
+  ERROR_CREATING_FEEDBACK: "Error while creating new feedback.",
+  NO_FEEDBACK_FOUND: "No feedback found.",
+  SUCCESS_FEEDBACK_UPDATE: "Feedback updated successfully.",
+  FAILURE_FEEDBACK_UPDATE: "Feedback update failed.",
 };
 
 export default customMessages;

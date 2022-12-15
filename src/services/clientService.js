@@ -6,8 +6,12 @@ import logger from "../utils/logger";
  *
  * @returns {Promise}
  */
-export function getAllClients() {
-  return Client.findAll();
+export async function getAllClients(filterBody, query) {
+  return await Client.findAll({
+    where: filterBody,
+    limit: query.limit,
+    offset: query.skip,
+  });
 }
 
 /**
@@ -16,8 +20,8 @@ export function getAllClients() {
  * @param   {String}  id
  * @returns {Promise}
  */
-export function getClient(id) {
-  return Client.findByPk(id);
+export async function getClient(id) {
+  return await Client.findByPk(id);
 }
 
 /**
@@ -61,8 +65,8 @@ export async function updateClient(id, body) {
  * @param   {String}  field
  * @returns {Promise}
  */
-export function getClientbyField(field) {
-  return Client.findOne({
+export async function getClientbyField(field) {
+  return await Client.findOne({
     where: field,
   });
 }
@@ -72,8 +76,9 @@ export function getClientbyField(field) {
  * @param {Object} filterBody
  * @returns {Promise}
  */
-export async function getAllClientsCount() {
-  return Client.count({
+export async function getAllClientsCount(filterBody) {
+  return await Client.count({
+    where: filterBody,
     distinct: true,
   });
 }

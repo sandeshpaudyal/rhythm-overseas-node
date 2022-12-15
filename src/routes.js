@@ -4,6 +4,8 @@ import userRoutes from "./routes/userRoutes";
 import authRoutes from "./routes/authRoutes";
 import clientRoutes from "./routes/clientRoutes";
 import candidateRoutes from "./routes/candidateRoutes";
+import feedbackRoutes from "./routes/feedbackRoutes";
+import importantLinkRoutes from "./routes/importantLinkRoutes";
 
 /**
  * Contains all API routes for the application.
@@ -39,5 +41,7 @@ router.use("/users", userRoutes);
 router.use("/auth", authRoutes);
 router.use("/clients", clientRoutes);
 router.use("/candidates", candidateRoutes);
+router.use("/feedbacks", feedbackRoutes);
+router.use("/important-links", importantLinkRoutes);
 
 export default router;

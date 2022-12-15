@@ -1,5 +1,6 @@
 import HttpStatus from "http-status-codes";
 import customMessages from "../constants/customMessages";
+import { filterClients } from "../filter/client";
 import {
   conflict,
   notFound,
@@ -28,9 +29,9 @@ const clientsController = {
     pageNo = pageNo ? Number(pageNo) : 1;
     limit = limit ? Number(limit) : Number(process.env.APP_PER_PAGE);
 
-    // const filterBody = await filterUser(req.query);
+    const filterBody = await filterClients(req.query);
 
-    const totalCount = await getAllClientsCount();
+    const totalCount = await getAllClientsCount(filterBody);
 
     // build query for pagination
     query.skip = Number((pageNo - 1) * limit);
@@ -38,7 +39,7 @@ const clientsController = {
 
     let meta = await getMetaDetail(pageNo, limit, totalCount);
 
-    getAllClients()
+    getAllClients(filterBody, query)
       .then((data) => res.json({ data, meta }))
       .catch((err) => {
         logger.error(customMessages.ERROR_LISTING_CLIENTS);

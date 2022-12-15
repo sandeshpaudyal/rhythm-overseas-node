@@ -1,5 +1,6 @@
 import HttpStatus from "http-status-codes";
 import customMessages from "../constants/customMessages";
+import { filterCandidates } from "../filter/candidates";
 import {
   conflict,
   notFound,
@@ -28,9 +29,9 @@ const candidatesController = {
     pageNo = pageNo ? Number(pageNo) : 1;
     limit = limit ? Number(limit) : Number(process.env.APP_PER_PAGE);
 
-    // const filterBody = await filterUser(req.query);
+    const filterBody = await filterCandidates(req.query);
 
-    const totalCount = await getAllCandidatesCount();
+    const totalCount = await getAllCandidatesCount(filterBody);
 
     // build query for pagination
     query.skip = Number((pageNo - 1) * limit);

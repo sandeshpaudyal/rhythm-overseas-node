@@ -138,8 +138,9 @@ export function getCandidatebyField(field) {
  * @param {Object} filterBody
  * @returns {Promise}
  */
-export async function getAllCandidatesCount() {
+export async function getAllCandidatesCount(filterBody) {
   return Candidate.count({
+    where: filterBody,
     distinct: true,
   });
 }
