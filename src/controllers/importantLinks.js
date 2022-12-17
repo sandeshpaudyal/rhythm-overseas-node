@@ -4,6 +4,7 @@ import { filterImportantLinks } from "../filter/importantLink";
 import { notFound, unprocessableEntity } from "../middlewares/errorHandler";
 import {
   createImportantLink,
+  deleteImportantLink,
   getAllImportantLinks,
   getAllImportantLinksCount,
   getImportantLink,
@@ -100,6 +101,27 @@ const importantLinksController = {
       })
       .catch((err) => {
         logger.error(customMessages.FAILURE_IMPORTANT_LINKS_UPDATE);
+        next(err);
+      });
+  },
+
+  /**
+   * Delete Important Link
+   */
+  async deleteImportantLink(req, res, next) {
+    const { id } = req.params;
+    const checkImportantLinkExists = await getImportantLink(id);
+
+    if (!checkImportantLinkExists) {
+      return notFound(req, res, customMessages.NO_IMPORTANT_LINKS_FOUND);
+    }
+
+    deleteImportantLink(id)
+      .then((data) => {
+        return res.status(HttpStatus.NO_CONTENT).json();
+      })
+      .catch((err) => {
+        logger.error(customMessages.FAILURE_IMPORTANT_LINKS_DELETE);
         next(err);
       });
   },

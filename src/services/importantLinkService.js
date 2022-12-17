@@ -60,6 +60,20 @@ export async function updateImportantLink(id, body) {
 }
 
 /**
+ * Delete a important link.
+ *
+ * @param   {String}  id
+ * @returns {Promise}
+ */
+export async function deleteImportantLink(id) {
+  return await ImportantLink.destroy({
+    where: {
+      id,
+    },
+  });
+}
+
+/**
  * Get a important link by single field.
  *
  * @param   {String}  field

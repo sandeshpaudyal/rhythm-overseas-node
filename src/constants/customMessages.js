@@ -51,6 +51,7 @@ const customMessages = {
   NO_IMPORTANT_LINKS_FOUND: "No important link found.",
   SUCCESS_IMPORTANT_LINKS_UPDATE: "Important link updated successfully.",
   FAILURE_IMPORTANT_LINKS_UPDATE: "Important link update failed.",
+  FAILURE_IMPORTANT_LINKS_DELETE: "Unable to delete important link.",
 
   // feedbacks
   ERROR_LISTING_FEEDBACKS: "Error on listing feedbacks.",

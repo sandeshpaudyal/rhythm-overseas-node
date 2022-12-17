@@ -39,4 +39,13 @@ router.put(
   ImportantLinkController.updateImportantLink
 );
 
+/**
+ * DELETE /api/importantLinks/:id
+ */
+router.delete(
+  "/:id",
+  validateAuthUser,
+  ImportantLinkController.deleteImportantLink
+);
+
 export default router;
