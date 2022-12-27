@@ -38,7 +38,7 @@ const importantLinksController = {
     getAllImportantLinks(filterBody, query)
       .then((data) => res.json({ data, meta }))
       .catch((err) => {
-        logger.error(customMessages.ERROR_LISTING_IMPORTANT_LINKSS);
+        logger.error(customMessages.ERROR_LISTING_IMPORTANT_LINKS);
         next(err);
       });
   },

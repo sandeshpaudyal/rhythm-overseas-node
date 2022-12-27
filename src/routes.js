@@ -7,6 +7,7 @@ import candidateRoutes from "./routes/candidateRoutes";
 import feedbackRoutes from "./routes/feedbackRoutes";
 import importantLinkRoutes from "./routes/importantLinkRoutes";
 import galleryRoutes from "./routes/galleryRoutes";
+import blogRoutes from "./routes/blogRoutes";
 
 /**
  * Contains all API routes for the application.
@@ -45,5 +46,6 @@ router.use("/candidates", candidateRoutes);
 router.use("/feedbacks", feedbackRoutes);
 router.use("/important-links", importantLinkRoutes);
 router.use("/galleries", galleryRoutes);
+router.use("/blogs", blogRoutes);
 
 export default router;

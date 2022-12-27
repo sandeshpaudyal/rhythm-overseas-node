@@ -44,7 +44,7 @@ const customMessages = {
     "Your email was successfully reset. Feel free to login and continue with your work.",
 
   // important links
-  ERROR_LISTING_IMPORTANT_LINKSS: "Error on listing important links.",
+  ERROR_LISTING_IMPORTANT_LINKS: "Error on listing important links.",
   ERROR_FETCHING_IMPORTANT_LINKS_ID:
     "Error while fetching important link with ID.",
   ERROR_CREATING_IMPORTANT_LINKS: "Error while creating new important link.",
@@ -60,6 +60,22 @@ const customMessages = {
   NO_FEEDBACK_FOUND: "No feedback found.",
   SUCCESS_FEEDBACK_UPDATE: "Feedback updated successfully.",
   FAILURE_FEEDBACK_UPDATE: "Feedback update failed.",
+
+  // blogs
+  ERROR_LISTING_BLOGS: "Error on listing blogs.",
+  ERROR_FETCHING_BLOGS_ID: "Error while fetching blog with ID.",
+  ERROR_CREATING_BLOGS: "Error while creating new blog.",
+  NO_BLOGS_FOUND: "No blog found.",
+  SUCCESS_BLOGS_UPDATE: "Blog updated successfully.",
+  FAILURE_BLOGS_UPDATE: "Blog update failed.",
+  FAILURE_BLOGS_DELETE: "Unable to delete blog.",
+
+  // blogs
+  ERROR_LISTING_IMAGES: "Error on listing gallery images.",
+  ERROR_FETCHING_IMAGES_ID: "Error while fetching gallery image with ID.",
+  ERROR_CREATING_IMAGES: "Error while creating image.",
+  NO_IMAGES_FOUND: "No image found.",
+  FAILURE_IMAGES_DELETE: "Unable to delete gallery image.",
 };
 
 export default customMessages;

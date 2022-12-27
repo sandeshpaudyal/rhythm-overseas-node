@@ -12,7 +12,7 @@ import {
 import logger from "../utils/logger";
 import { getMetaDetail } from "../utils/reusableUtils";
 
-const gallerysController = {
+const galleriesController = {
   /**
    * List of gallery images
    */
@@ -41,7 +41,7 @@ const gallerysController = {
     getAllGalleryImages(filterBody, query)
       .then((data) => res.json({ data, meta }))
       .catch((err) => {
-        logger.error(customMessages.ERROR_LISTING_IMPORTANT_LINKSS);
+        logger.error(customMessages.ERROR_LISTING_IMAGES);
         next(err);
       });
   },
@@ -55,10 +55,8 @@ const gallerysController = {
     const galleryDetail = await getGalleryImage(galleryId);
 
     if (!galleryDetail) {
-      logger.error(
-        `${customMessages.ERROR_FETCHING_IMPORTANT_LINKS_ID} ${galleryId}`
-      );
-      return notFound(req, res, customMessages.NO_IMPORTANT_LINKS_FOUND);
+      logger.error(`${customMessages.ERROR_FETCHING_IMAGES_ID} ${galleryId}`);
+      return notFound(req, res, customMessages.NO_IMAGES_FOUND);
     }
 
     return res.json({ data: galleryDetail });
@@ -72,7 +70,7 @@ const gallerysController = {
     addImageToGallery(req.body, req.files)
       .then((data) => res.status(HttpStatus.CREATED).json({ data }))
       .catch((err) => {
-        logger.error(customMessages.ERROR_CREATING_IMPORTANT_LINKS);
+        logger.error(customMessages.ERROR_CREATING_IMAGES);
         next(err);
       });
   },
@@ -85,7 +83,7 @@ const gallerysController = {
     const checkGalleryImageExists = await getGalleryImage(id);
 
     if (!checkGalleryImageExists) {
-      return notFound(req, res, customMessages.NO_IMPORTANT_LINKS_FOUND);
+      return notFound(req, res, customMessages.NO_IMAGES_FOUND);
     }
 
     deleteGalleryImage(id)
@@ -93,10 +91,10 @@ const gallerysController = {
         return res.status(HttpStatus.NO_CONTENT).json();
       })
       .catch((err) => {
-        logger.error(customMessages.FAILURE_IMPORTANT_LINKS_DELETE);
+        logger.error(customMessages.FAILURE_IMAGES_DELETE);
         next(err);
       });
   },
 };
 
-module.exports = gallerysController;
+module.exports = galleriesController;

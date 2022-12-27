@@ -64,18 +64,6 @@ export async function deleteGalleryImage(id) {
 }
 
 /**
- * Get a image by single field.
- *
- * @param   {String}  field
- * @returns {Promise}
- */
-export async function getGalleryImagebyField(field) {
-  return await Gallery.findOne({
-    where: field,
-  });
-}
-
-/**
  * get total count of available images
  * @param {Object} filterBody
  * @returns {Promise}
