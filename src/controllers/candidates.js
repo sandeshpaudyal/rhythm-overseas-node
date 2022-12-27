@@ -1,6 +1,6 @@
 import HttpStatus from "http-status-codes";
 import customMessages from "../constants/customMessages";
-import { filterCandidates } from "../filter/candidates";
+import { filterCandidates } from "../filter/candidate";
 import {
   conflict,
   notFound,

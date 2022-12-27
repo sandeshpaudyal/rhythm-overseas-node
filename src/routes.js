@@ -6,6 +6,7 @@ import clientRoutes from "./routes/clientRoutes";
 import candidateRoutes from "./routes/candidateRoutes";
 import feedbackRoutes from "./routes/feedbackRoutes";
 import importantLinkRoutes from "./routes/importantLinkRoutes";
+import galleryRoutes from "./routes/galleryRoutes";
 
 /**
  * Contains all API routes for the application.
@@ -43,5 +44,6 @@ router.use("/clients", clientRoutes);
 router.use("/candidates", candidateRoutes);
 router.use("/feedbacks", feedbackRoutes);
 router.use("/important-links", importantLinkRoutes);
+router.use("/galleries", galleryRoutes);
 
 export default router;
