@@ -28,13 +28,14 @@ export async function getGalleryImage(id) {
  * Create a image.
  *
  * @param   {Object}  body
+ * @param   {Array}  uploads
  * @returns {Promise}
  */
 
 export async function addImageToGallery(body, uploads) {
   const insertBody = {
     title: body.title,
-    is_visible: body.visibility ? body.visibility : false,
+    is_visible: body.is_visible ? body.is_visible : false,
   };
 
   let imageDetail = uploads.filter((file) => file.fieldname === "image");
@@ -43,6 +44,33 @@ export async function addImageToGallery(body, uploads) {
   }
   return await Gallery.build(insertBody)
     .save()
+    .then((data) => data)
+    .catch((err) => {
+      logger.error("Error on adding new image ", err);
+    });
+}
+
+/**
+ * update image.
+ *
+ * @param   {String}  id
+ * @param   {Object}  body
+ * @param   {Array}  uploads
+ * @returns {Promise}
+ */
+
+export async function updateImageDetails(id, body, uploads) {
+  const uploadBody = {
+    title: body?.title,
+    is_visible: body?.is_visible ? body.is_visible : false,
+  };
+  if (uploads.length > 0) {
+    let imageDetail = uploads.filter((file) => file.fieldname === "image");
+    if (imageDetail) {
+      uploadBody.image = imageDetail[0]["path"];
+    }
+  }
+  return await Gallery.update(uploadBody, { where: { id } })
     .then((data) => data)
     .catch((err) => {
       logger.error("Error on adding new image ", err);

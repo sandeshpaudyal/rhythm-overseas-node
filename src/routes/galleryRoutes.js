@@ -26,6 +26,11 @@ router.get("/:id", GalleryController.show);
 router.post("/", validateAuthUser, GalleryController.addImageToGallery);
 
 /**
+ * PUT /api/galleries/:id
+ */
+router.put("/:id", validateAuthUser, GalleryController.updateImageDetails);
+
+/**
  * DELETE /api/galleries/:id
  */
 router.delete("/:id", validateAuthUser, GalleryController.deleteGalleryImage);

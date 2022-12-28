@@ -70,12 +70,14 @@ const customMessages = {
   FAILURE_BLOGS_UPDATE: "Blog update failed.",
   FAILURE_BLOGS_DELETE: "Unable to delete blog.",
 
-  // blogs
+  // image gallery
   ERROR_LISTING_IMAGES: "Error on listing gallery images.",
   ERROR_FETCHING_IMAGES_ID: "Error while fetching gallery image with ID.",
   ERROR_CREATING_IMAGES: "Error while creating image.",
   NO_IMAGES_FOUND: "No image found.",
   FAILURE_IMAGES_DELETE: "Unable to delete gallery image.",
+  FAILURE_IMAGE_GALLERY_UPDATE: "Image detail update failed.",
+  SUCCESS_IMAGE_GALLERY_UPDATE: "Image detail updated successfully.",
 };
 
 export default customMessages;

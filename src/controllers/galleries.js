@@ -1,16 +1,18 @@
 import HttpStatus from "http-status-codes";
 import customMessages from "../constants/customMessages";
 import { filterGalleries } from "../filter/gallery";
-import { notFound } from "../middlewares/errorHandler";
+import { notFound, unprocessableEntity } from "../middlewares/errorHandler";
 import {
   addImageToGallery,
   deleteGalleryImage,
   getAllGalleryImages,
   getAllGalleryImagesCount,
   getGalleryImage,
+  updateImageDetails,
 } from "../services/galleryService";
 import logger from "../utils/logger";
 import { getMetaDetail } from "../utils/reusableUtils";
+import fs from "fs";
 
 const galleriesController = {
   /**
@@ -71,6 +73,38 @@ const galleriesController = {
       .then((data) => res.status(HttpStatus.CREATED).json({ data }))
       .catch((err) => {
         logger.error(customMessages.ERROR_CREATING_IMAGES);
+        next(err);
+      });
+  },
+
+  /**
+   * Update image or image detail
+   */
+
+  async updateImageDetails(req, res, next) {
+    const { id } = req.params;
+
+    const getImageDetail = await getGalleryImage(id);
+
+    if (req.files.length > 0) {
+      fs.unlinkSync(getImageDetail.image);
+    }
+
+    updateImageDetails(id, req.body, req.files)
+      .then((data) => {
+        if (data[0] !== 1) {
+          return unprocessableEntity(
+            req,
+            res,
+            customMessages.FAILURE_IMAGE_GALLERY_UPDATE
+          );
+        }
+        return res.json({
+          data: { message: customMessages.SUCCESS_IMAGE_GALLERY_UPDATE },
+        });
+      })
+      .catch((err) => {
+        logger.error(customMessages.FAILURE_IMAGE_GALLERY_UPDATE);
         next(err);
       });
   },

@@ -23,6 +23,16 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         defaultValue: false,
       },
+      image_url: {
+        type: DataTypes.VIRTUAL,
+        get() {
+          return this.getDataValue("image")
+            ? this.getDataValue("image").includes("uploads/")
+              ? `${process.env.APP_URL}/${this.getDataValue("image")}`
+              : this.getDataValue("image")
+            : null;
+        },
+      },
     },
     {
       tableName: "galleries",
