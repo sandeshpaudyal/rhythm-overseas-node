@@ -12,10 +12,7 @@ const createClientSchema = Joi.object({
   representative_name: Joi.string().label("Representative Name").required(),
   email: Joi.string().label("Email").required(),
   contact_number: Joi.string().label("Contact Number").max(20).required(),
-  alternative_number: Joi.string()
-    .label("Alternative Number")
-    .max(20)
-    .optional(),
+  alternate_number: Joi.string().label("Alternative Number").max(20).optional(),
   looking_for: Joi.string().label("Looking For").required(),
   status: Joi.boolean().label("Status").optional(),
   designation: Joi.string().label("Designation").required(),
@@ -31,10 +28,7 @@ const updateClientSchema = Joi.object({
   representative_name: Joi.string().label("Representative Name").required(),
   email: Joi.string().label("Email").required(),
   contact_number: Joi.string().label("Contact Number").max(20).required(),
-  alternative_number: Joi.string()
-    .label("Alternative Number")
-    .max(20)
-    .optional(),
+  alternate_number: Joi.string().label("Alternative Number").max(20).optional(),
   looking_for: Joi.string().label("Looking For").required(),
   designation: Joi.string().label("Designation").required(),
   status: Joi.boolean().label("Status").optional(),

@@ -33,6 +33,10 @@ module.exports = (sequelize, DataTypes) => {
       },
     },
     {
+      defaultScope: {
+        order: [["createdAt", "DESC"]],
+        attributes: { exclude: ["updatedAt"] },
+      },
       tableName: "blogs",
     }
   );
