@@ -8,6 +8,7 @@ import {
   getAllBlogs,
   getAllBlogsCount,
   getBlog,
+  updateBlog,
 } from "../services/blogService";
 import logger from "../utils/logger";
 import { getMetaDetail } from "../utils/reusableUtils";

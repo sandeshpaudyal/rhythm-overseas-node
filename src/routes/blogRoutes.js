@@ -35,10 +35,10 @@ router.post(
 );
 
 /**
- * PUT /api/blogs
+ * PUT /api/blogs/:id
  */
 router.put(
-  "/",
+  "/:id",
   validateAuthUser,
   blogUpdateValidator,
   BlogController.updateBlog
