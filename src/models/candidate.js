@@ -105,13 +105,17 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: true,
       },
+      secondary_contact_number: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
       email: {
         type: DataTypes.STRING,
         allowNull: true,
       },
       cv: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       cv_url: {
         type: DataTypes.VIRTUAL,
@@ -130,7 +134,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       previous_experience: {
-        allowNull: false,
+        allowNull: true,
         type: DataTypes.TEXT,
       },
       status: {

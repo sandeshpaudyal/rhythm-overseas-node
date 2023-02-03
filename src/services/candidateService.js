@@ -31,33 +31,33 @@ export async function createCandidate(body, uploads) {
   let ppSizePhoto = uploads.filter(
     (file) => file.fieldname === "pp_size_photo"
   );
-  if (ppSizePhoto) {
+  if (ppSizePhoto.length > 0) {
     body.pp_size_photo = ppSizePhoto[0]["path"];
   }
 
   let fullSizePhoto = uploads.filter(
     (file) => file.fieldname === "full_size_photo"
   );
-  if (fullSizePhoto) {
+  if (fullSizePhoto.length > 0) {
     body.full_size_photo = fullSizePhoto[0]["path"];
   }
 
   let passportFront = uploads.filter(
     (file) => file.fieldname === "passport_front"
   );
-  if (passportFront) {
+  if (passportFront.length > 0) {
     body.passport_front = passportFront[0]["path"];
   }
 
   let passportBack = uploads.filter(
     (file) => file.fieldname === "passport_back"
   );
-  if (passportBack) {
+  if (passportBack.length > 0) {
     body.passport_back = passportBack[0]["path"];
   }
 
   let cv = uploads.filter((file) => file.fieldname === "cv");
-  if (cv) {
+  if (cv.length > 0) {
     body.cv = cv[0]["path"];
   }
 

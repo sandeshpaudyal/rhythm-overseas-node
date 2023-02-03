@@ -12,17 +12,24 @@ const createCandidateSchema = Joi.object({
   city: Joi.string().label("City").required(),
   emergency_contact_name: Joi.string()
     .label("Emergency Contact Name")
-    .required(),
+    .optional(),
   emergency_contact_number: Joi.string()
     .label("Emergency Contact Number")
-    .required(),
+    .optional(),
+  secondary_contact_number: Joi.string()
+    .label("Secondary Contact Number")
+    .allow("", null)
+    .optional(),
   emergency_contact_relation: Joi.string()
     .label("Emergency Contact Relation")
-    .required(),
-  email: Joi.string().label("Email").required(),
+    .optional(),
+  email: Joi.string().label("Email").allow("", null).optional(),
   job_description: Joi.string().label("Job Description").required(),
   country_willing: Joi.string().label("Country Willing").required(),
-  previous_experience: Joi.string().label("Previous Experiences").required(),
+  previous_experience: Joi.string()
+    .label("Previous Experiences")
+    .allow("", null)
+    .optional(),
   pp_size_photo: Joi.any().label("Passport Size Image").optional(),
   full_size_photo: Joi.any().label("Full Size Image").optional(),
   passport_front: Joi.any().label("Passport Front").optional(),
