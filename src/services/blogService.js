@@ -49,9 +49,14 @@ export async function createBlog(body, uploads) {
  *
  * @param   {String}  id
  * @param   {Object}  body
+ * @param   {Array}  uploads
  * @returns {Promise}
  */
-export async function updateBlog(id, body) {
+export async function updateBlog(id, body, uploads) {
+  let coverImage = uploads.filter((file) => file.fieldname === "cover_image");
+  if (coverImage.length > 0) {
+    body.cover_image = coverImage[0]["path"];
+  }
   return await Blog.update(body, {
     where: {
       id,

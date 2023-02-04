@@ -88,7 +88,7 @@ const blogsController = {
       return notFound(req, res, customMessages.NO_BLOGS_FOUND);
     }
 
-    updateBlog(id, req.body)
+    updateBlog(id, req.body, req.files)
       .then((data) => {
         if (data[0] !== 1) {
           return unprocessableEntity(
