@@ -9,6 +9,7 @@ import importantLinkRoutes from "./routes/importantLinkRoutes";
 import galleryRoutes from "./routes/galleryRoutes";
 import blogRoutes from "./routes/blogRoutes";
 import sectorRoutes from "./routes/sectorRoutes";
+import countryRoutes from "./routes/countryRoutes";
 
 /**
  * Contains all API routes for the application.
@@ -49,5 +50,6 @@ router.use("/important-links", importantLinkRoutes);
 router.use("/galleries", galleryRoutes);
 router.use("/blogs", blogRoutes);
 router.use("/sectors", sectorRoutes);
+router.use("/countries", countryRoutes);
 
 export default router;

@@ -127,11 +127,11 @@ module.exports = (sequelize, DataTypes) => {
       },
       job_description: {
         type: DataTypes.TEXT,
-        allowNull: false,
+        allowNull: true,
       },
       country_willing: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       previous_experience: {
         allowNull: true,
@@ -166,6 +166,21 @@ module.exports = (sequelize, DataTypes) => {
       tableName: "candidates",
     }
   );
+
+  Candidate.associate = function (models) {
+    Candidate.hasMany(models.CandidateJobWilling, {
+      foreignKey: "candidate_id",
+      as: "job_willings",
+    });
+    Candidate.hasMany(models.CandidateCountriesWilling, {
+      foreignKey: "candidate_id",
+      as: "countries_willings",
+    });
+    Candidate.hasMany(models.CandidatePreviousExperience, {
+      foreignKey: "candidate_id",
+      as: "previous_experiences",
+    });
+  };
 
   return Candidate;
 };

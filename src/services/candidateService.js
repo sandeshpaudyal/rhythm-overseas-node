@@ -1,5 +1,40 @@
-import { Candidate } from "../models";
+import {
+  Candidate,
+  CandidateJobWilling,
+  CandidateCountriesWilling,
+  CandidatePreviousExperience,
+  Sector,
+  Country,
+} from "../models";
 import logger from "../utils/logger";
+
+// includes models
+const includes = [
+  {
+    model: CandidateJobWilling,
+    as: "job_willings",
+    include: {
+      model: Sector,
+      as: "sector",
+    },
+  },
+  {
+    model: CandidateCountriesWilling,
+    as: "countries_willings",
+    include: {
+      model: Country,
+      as: "country",
+    },
+  },
+  {
+    model: CandidatePreviousExperience,
+    as: "previous_experiences",
+    include: {
+      model: Sector,
+      as: "sector",
+    },
+  },
+];
 
 /**
  * Get all candidates.
@@ -7,7 +42,7 @@ import logger from "../utils/logger";
  * @returns {Promise}
  */
 export function getAllCandidates() {
-  return Candidate.findAll();
+  return Candidate.findAll({ include: includes });
 }
 
 /**
@@ -17,7 +52,9 @@ export function getAllCandidates() {
  * @returns {Promise}
  */
 export function getCandidate(id) {
-  return Candidate.findByPk(id);
+  return Candidate.findByPk(id, {
+    include: includes,
+  });
 }
 
 /**
@@ -28,6 +65,10 @@ export function getCandidate(id) {
  */
 
 export async function createCandidate(body, uploads) {
+  let countryWilling = [];
+  let jobWilling = [];
+  let previousExperience = [];
+
   let ppSizePhoto = uploads.filter(
     (file) => file.fieldname === "pp_size_photo"
   );
@@ -61,12 +102,49 @@ export async function createCandidate(body, uploads) {
     body.cv = cv[0]["path"];
   }
 
-  return await Candidate.build(body)
-    .save()
-    .then((data) => data)
-    .catch((err) => {
-      logger.error("Error on creating new candidate ", err);
+  // store willing countries
+  if (body?.country_willing) {
+    countryWilling = body.country_willing;
+    delete body.country_willing;
+  }
+
+  // store willing jobs
+  if (body?.job_description) {
+    jobWilling = body.job_description;
+    delete body.job_description;
+  }
+
+  // store previous experiences
+  if (body?.previous_experience) {
+    previousExperience = body.previous_experience;
+    delete body.previous_experience;
+  }
+
+  const candidateDetail = await Candidate.build(body).save();
+
+  if (jobWilling.length > 0) {
+    jobWilling = jobWilling.map((x) => {
+      return { sector_id: x, candidate_id: candidateDetail.id };
     });
+    await CandidateJobWilling.bulkCreate(jobWilling);
+  }
+
+  if (countryWilling.length > 0) {
+    countryWilling = countryWilling.map((x) => {
+      return { country_id: x, candidate_id: candidateDetail.id };
+    });
+    await CandidateCountriesWilling.bulkCreate(countryWilling);
+  }
+
+  if (previousExperience.length > 0) {
+    previousExperience = previousExperience.map((x) => {
+      return { sector_id: x, candidate_id: candidateDetail.id };
+    });
+
+    await CandidatePreviousExperience.bulkCreate(previousExperience);
+  }
+
+  return getCandidate(candidateDetail.id);
 }
 
 /**

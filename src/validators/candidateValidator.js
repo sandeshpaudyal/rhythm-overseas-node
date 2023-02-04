@@ -33,12 +33,9 @@ const createCandidateSchema = Joi.object({
     .label("Emergency Contact Relation")
     .optional(),
   email: Joi.string().label("Email").allow("", null).optional(),
-  job_description: Joi.string().label("Job Description").required(),
-  country_willing: Joi.string().label("Country Willing").required(),
-  previous_experience: Joi.string()
-    .label("Previous Experiences")
-    .allow("", null)
-    .optional(),
+  job_description: Joi.array().label("Job Description").required(),
+  country_willing: Joi.array().label("Country Willing").required(),
+  previous_experience: Joi.array().label("Previous Experiences").optional(),
   pp_size_photo: Joi.any().label("Passport Size Image").optional(),
   full_size_photo: Joi.any().label("Full Size Image").optional(),
   passport_front: Joi.any().label("Passport Front").optional(),
@@ -67,7 +64,7 @@ const updateCandidateSchema = Joi.object({
     .label("Secondary Contact Number")
     .allow("", null)
     .optional(),
-  other_country: Joi.string().label("Other Country").allow("", null).optional(),
+  other_country: Joi.array().label("Other Country").allow("", null).optional(),
   other_job_willing: Joi.string()
     .label("Other Job Willing")
     .allow("", null)
@@ -77,9 +74,9 @@ const updateCandidateSchema = Joi.object({
     .allow("", null)
     .optional(),
   email: Joi.string().label("Email").optional(),
-  job_description: Joi.string().label("Job Description").optional(),
-  country_willing: Joi.string().label("Country Willing").optional(),
-  previous_experience: Joi.string().label("Previous Experiences").optional(),
+  job_description: Joi.array().label("Job Description").optional(),
+  country_willing: Joi.array().label("Country Willing").optional(),
+  previous_experience: Joi.array().label("Previous Experiences").optional(),
   pp_size_photo: Joi.any().label("Passport Size Image").optional(),
   full_size_photo: Joi.any().label("Full Size Image").optional(),
   passport_front: Joi.any().label("Passport Front").optional(),
