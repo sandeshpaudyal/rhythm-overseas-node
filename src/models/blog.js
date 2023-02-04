@@ -29,8 +29,10 @@ module.exports = (sequelize, DataTypes) => {
       cover_image_url: {
         type: DataTypes.VIRTUAL,
         get() {
-          return this.getDataValue("cv")
-            ? `https://rhythmoverseas.com.np/${this.getDataValue("cv")}`
+          return this.getDataValue("cover_image")
+            ? `https://rhythmoverseas.com.np/${this.getDataValue(
+                "cover_image"
+              )}`
             : null;
         },
       },
