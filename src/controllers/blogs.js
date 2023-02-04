@@ -68,7 +68,7 @@ const blogsController = {
    */
 
   async createBlog(req, res, next) {
-    createBlog(req.body)
+    createBlog(req.body, req.files)
       .then((data) => res.status(HttpStatus.CREATED).json({ data }))
       .catch((err) => {
         logger.error(customMessages.ERROR_CREATING_BLOGS);

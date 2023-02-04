@@ -31,7 +31,11 @@ export async function getBlog(id) {
  * @returns {Promise}
  */
 
-export async function createBlog(body) {
+export async function createBlog(body, uploads) {
+  let coverImage = uploads.filter((file) => file.fieldname === "cover_image");
+  if (coverImage.length > 0) {
+    body.cover_image = coverImage[0]["path"];
+  }
   return await Blog.build(body)
     .save()
     .then((data) => data)

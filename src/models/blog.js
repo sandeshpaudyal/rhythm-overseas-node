@@ -26,6 +26,14 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: true,
       },
+      cover_image_url: {
+        type: DataTypes.VIRTUAL,
+        get() {
+          return this.getDataValue("cv")
+            ? `https://rhythmoverseas.com.np/${this.getDataValue("cv")}`
+            : null;
+        },
+      },
       is_published: {
         type: DataTypes.BOOLEAN,
         allowNull: false,

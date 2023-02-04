@@ -33,7 +33,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.VIRTUAL,
         get() {
           return this.getDataValue("pp_size_photo")
-            ? `https://insta.outcodetest.com/${this.getDataValue(
+            ? `https://rhythmoverseas.com.np/${this.getDataValue(
                 "pp_size_photo"
               )}`
             : null;
@@ -47,7 +47,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.VIRTUAL,
         get() {
           return this.getDataValue("full_size_photo")
-            ? `https://insta.outcodetest.com/${this.getDataValue(
+            ? `https://rhythmoverseas.com.np/${this.getDataValue(
                 "full_size_photo"
               )}`
             : null;
@@ -61,7 +61,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.VIRTUAL,
         get() {
           return this.getDataValue("passport_front")
-            ? `https://insta.outcodetest.com/${this.getDataValue(
+            ? `https://rhythmoverseas.com.np/${this.getDataValue(
                 "passport_front"
               )}`
             : null;
@@ -75,7 +75,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.VIRTUAL,
         get() {
           return this.getDataValue("passport_back")
-            ? `https://insta.outcodetest.com/${this.getDataValue(
+            ? `https://rhythmoverseas.com.np/${this.getDataValue(
                 "passport_back"
               )}`
             : null;
@@ -121,7 +121,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.VIRTUAL,
         get() {
           return this.getDataValue("cv")
-            ? `https://insta.outcodetest.com/${this.getDataValue("cv")}`
+            ? `https://rhythmoverseas.com.np/${this.getDataValue("cv")}`
             : null;
         },
       },
