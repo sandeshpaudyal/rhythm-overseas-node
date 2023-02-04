@@ -6,14 +6,14 @@ import { Op } from "sequelize";
  *
  * @returns {Promise}
  */
-export function filterBlogs(query) {
+export function filterSectors(query) {
   let searchParams = {};
 
   if (query.id) {
     searchParams.id = query.id;
   } else {
     if (query.keyword) {
-      searchParams.title = { [Op.like]: `%${query.keyword}%` };
+      searchParams.name = { [Op.like]: `%${query.keyword}%` };
     }
   }
 

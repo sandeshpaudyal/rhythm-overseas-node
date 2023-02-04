@@ -1,0 +1,498 @@
+"use strict";
+const Sector = require("../models").Sector;
+
+module.exports = {
+  up: async (queryInterface, Sequelize) => {
+    const checkSector = await queryInterface.rawSelect(
+      "sectors",
+      {
+        where: { id: "275afb6d-501f-453c-92f3-f67d062a7396" },
+      },
+      ["id"]
+    );
+    if (!checkSector) {
+      let data = [
+        {
+          id: "275afb6d-501f-453c-92f3-f67d062a7396",
+          name: "A/C Technician",
+          order_by: 10,
+          status: true,
+        },
+        {
+          id: "70eb81f1-7438-40c3-828a-317979764d2c",
+          name: "Accountant",
+          order_by: 20,
+          status: true,
+        },
+        {
+          id: "d0200974-1f24-4712-8cb1-889335194551",
+          name: "Accounts Payable",
+          order_by: 30,
+          status: true,
+        },
+        {
+          id: "b864d293-c295-453b-9d2c-53fd04b7bd10",
+          name: "Ambulance Driver",
+          order_by: 40,
+          status: true,
+        },
+        {
+          id: "05be073b-208c-40b5-96b4-23c2cfc27fb7",
+          name: "Assistant Accountant",
+          order_by: 50,
+          status: true,
+        },
+        {
+          id: "273fcd3b-36a1-4a20-93bb-01d84e8ab4f5",
+          name: "Baker Confectioner",
+          order_by: 60,
+          status: true,
+        },
+        {
+          id: "81084ca5-e460-4b04-b635-1569bc534585",
+          name: "Bell Boys",
+          order_by: 70,
+          status: true,
+        },
+        {
+          id: "d8b019e2-9024-4061-90d4-26541c297cc5",
+          name: "Body Guard",
+          order_by: 80,
+          status: true,
+        },
+        {
+          id: "57fe46a6-e794-499b-bde2-135e02a1a6e6",
+          name: "Butcher",
+          order_by: 90,
+          status: true,
+        },
+        {
+          id: "b51de7e7-78cd-460f-9792-f7e75f84781d",
+          name: "Carpenter-Shuttering/Finishing",
+          order_by: 100,
+          status: true,
+        },
+        {
+          id: "425f6b38-801e-48d8-8239-1ca446159fdb",
+          name: "Cashiers/Accounts Assistants",
+          order_by: 110,
+          status: true,
+        },
+        {
+          id: "f4efcc47-3ada-413b-9222-5993dfe5adef",
+          name: "Chef",
+          order_by: 120,
+          status: true,
+        },
+        {
+          id: "894f63bb-7f6e-4673-a1da-104bb4b83b1d",
+          name: "Chef-de-parties ",
+          order_by: 130,
+          status: true,
+        },
+        {
+          id: "6fec892b-f576-4ce1-9827-6f7b2fd7e609",
+          name: "Chiller Plant Technician",
+          order_by: 140,
+          status: true,
+        },
+        {
+          id: "7deb2447-9c83-43bd-9a7e-02eab9db3b17",
+          name: "Computer Operator",
+          order_by: 150,
+          status: true,
+        },
+        {
+          id: "0542ea62-a214-4e1d-817a-1f2f719c9ff1",
+          name: "Concrete Pump Operator",
+          order_by: 160,
+          status: true,
+        },
+        {
+          id: "f0d779c6-38ae-4523-95dd-e8b02172cdea",
+          name: "Cook",
+          order_by: 170,
+          status: true,
+        },
+        {
+          id: "914d4743-babb-4b4b-8f59-63f9a6e8ae77",
+          name: "Crane Opr",
+          order_by: 180,
+          status: true,
+        },
+        {
+          id: "c9c0cbbb-708b-449c-b570-de40ce7f2cd7",
+          name: "Credit Supervisors",
+          order_by: 190,
+          status: true,
+        },
+        {
+          id: "79ab8cfd-8437-4cf6-8089-a4efc2596a68",
+          name: "Dozer Opr",
+          order_by: 200,
+          status: true,
+        },
+        {
+          id: "011da6d6-01ed-48be-85c7-13e9639f46d3",
+          name: "Driver Light Vehicle",
+          order_by: 210,
+          status: true,
+        },
+        {
+          id: "ba4d203e-8ebb-4c11-adb6-3670272b20b2",
+          name: "Duct Technician",
+          order_by: 220,
+          status: true,
+        },
+        {
+          id: "c19f0264-d23d-469f-ac09-9774ffd4571d",
+          name: "Electrician",
+          order_by: 230,
+          status: true,
+        },
+        {
+          id: "e0175e83-5ba4-4841-94cb-c7738444c651",
+          name: "Engineer",
+          order_by: 240,
+          status: true,
+        },
+        {
+          id: "327c8899-8dd6-4f83-8162-ea156307aff9",
+          name: "F&B Captains",
+          order_by: 250,
+          status: true,
+        },
+        {
+          id: "650a391d-3b17-4e22-82ad-4c0f7c62670d",
+          name: "Factory Worker",
+          order_by: 260,
+          status: true,
+        },
+        {
+          id: "3880845d-854c-4202-a3ab-5303bdc13b6b",
+          name: "Farm Worker",
+          order_by: 270,
+          status: true,
+        },
+        {
+          id: "9b127560-ce13-46f4-b52a-c1c76c4d0f9a",
+          name: "Female General Cleaner",
+          order_by: 280,
+          status: true,
+        },
+        {
+          id: "b4485e08-258b-49ea-abf4-719f04055577",
+          name: "Firefighters",
+          order_by: 290,
+          status: true,
+        },
+        {
+          id: "652ea1b5-eff2-424d-af36-4039383d219e",
+          name: "Foreman-Civil/Electrical/Plumbing/Carpentry",
+          order_by: 300,
+          status: true,
+        },
+        {
+          id: "ca146768-417f-4a36-b81f-c6b99d79af78",
+          name: "General Worker",
+          order_by: 310,
+          status: true,
+        },
+        {
+          id: "9e59d3f3-76f2-414e-b334-5f72dc5da92d",
+          name: "Grader Opr",
+          order_by: 320,
+          status: true,
+        },
+        {
+          id: "937a0401-e783-4f2b-a3a1-aeabfc833fc7",
+          name: "Health Assistant",
+          order_by: 330,
+          status: true,
+        },
+        {
+          id: "179cf7e8-ba94-4350-a7d6-12a5601f96cd",
+          name: "Heavy Driver",
+          order_by: 340,
+          status: true,
+        },
+        {
+          id: "2b282c0b-6d31-4328-9df5-6deedbfefcbb",
+          name: "Heavy Equipment Operators-Excavator Loader",
+          order_by: 350,
+          status: true,
+        },
+        {
+          id: "f008019a-4cbd-4431-8e36-834fc119050d",
+          name: "Income Auditors",
+          order_by: 360,
+          status: true,
+        },
+        {
+          id: "0bdff9c8-29a8-45ea-be2b-4fb4e77f76a9",
+          name: "IT Expert",
+          order_by: 370,
+          status: true,
+        },
+        {
+          id: "96e2fb05-cc57-46aa-8263-28c3e0ebcf54",
+          name: "Kitchen Commis ",
+          order_by: 380,
+          status: true,
+        },
+        {
+          id: "95e8fa58-3e7b-4f2d-a1b9-3ba2992e1648",
+          name: "Kitchen Stewards",
+          order_by: 390,
+          status: true,
+        },
+        {
+          id: "9b15fd31-b91d-4153-819d-4541fda289b1",
+          name: "Light Driver",
+          order_by: 400,
+          status: true,
+        },
+        {
+          id: "9d01b6fc-7633-4fa1-b055-da9563997c90",
+          name: "Maintenance Technician",
+          order_by: 410,
+          status: true,
+        },
+        {
+          id: "9d8d30cb-efe2-496b-bb28-31157b53c86a",
+          name: "Male General Cleaner",
+          order_by: 420,
+          status: true,
+        },
+        {
+          id: "15327356-d100-440b-9a4f-f4c9b60cf242",
+          name: "Male Nurse",
+          order_by: 430,
+          status: true,
+        },
+        {
+          id: "5e423879-928f-4cc2-9d7b-f06236b16f96",
+          name: "Manager",
+          order_by: 440,
+          status: true,
+        },
+        {
+          id: "10b86794-7563-425e-b313-4e615d411152",
+          name: "Mason-Tile/Block Plaster/Marble",
+          order_by: 450,
+          status: true,
+        },
+        {
+          id: "538c2809-8685-4b9c-9827-9ded81943b0a",
+          name: "Masonry/Scaffolding/Steel Fixing",
+          order_by: 460,
+          status: true,
+        },
+        {
+          id: "7cf85350-cf8d-4630-bbb4-6384f22b48a3",
+          name: "Materials & Concrete Technician",
+          order_by: 470,
+          status: true,
+        },
+        {
+          id: "b5faa094-b565-43ee-9904-56b07fdf3c5b",
+          name: "Multi Task Workers",
+          order_by: 480,
+          status: true,
+        },
+        {
+          id: "dcd4d492-a184-4fa6-90cd-73f20ca8f233",
+          name: "Nurse",
+          order_by: 490,
+          status: true,
+        },
+        {
+          id: "37d95cf3-0425-4069-b164-363988035ff8",
+          name: "Office Boy",
+          order_by: 500,
+          status: true,
+        },
+        {
+          id: "33113137-ed5a-41b8-9d88-162870b3e1fc",
+          name: "Operation General",
+          order_by: 510,
+          status: true,
+        },
+        {
+          id: "1fbf75d7-75e8-4e90-b935-0efd150ea361",
+          name: "Others",
+          order_by: 10000,
+          status: true,
+        },
+        {
+          id: "b12ba0e0-00cf-4f27-bb50-c20b63f37be6",
+          name: "Packaging Worker",
+          order_by: 530,
+          status: true,
+        },
+        {
+          id: "d908f1ce-5a0a-45f7-9a7a-ac2a2f4aa53c",
+          name: "Painter-Spray/Roller and many more",
+          order_by: 540,
+          status: true,
+        },
+        {
+          id: "4c246117-f833-47d2-989e-e0e426edb8d4",
+          name: "Pastryman",
+          order_by: 550,
+          status: true,
+        },
+        {
+          id: "84743754-be4c-4c33-a3d3-e083055bafc9",
+          name: "Plant Technician",
+          order_by: 560,
+          status: true,
+        },
+        {
+          id: "6d3afb70-de4e-4ff8-a405-7cacf0a777bd",
+          name: "Plant/Road Operator",
+          order_by: 570,
+          status: true,
+        },
+        {
+          id: "83e566b4-7ab0-4f94-a555-05db7548c365",
+          name: "Plumber/Pipe fitter",
+          order_by: 580,
+          status: true,
+        },
+        {
+          id: "2671f1e7-0833-486a-8d3d-4f146bffc90d",
+          name: "Poultry Worker",
+          order_by: 590,
+          status: true,
+        },
+        {
+          id: "d8c9d8cb-3aac-48f5-8ba9-2d2cac6f374e",
+          name: "Quantity Surveyor",
+          order_by: 600,
+          status: true,
+        },
+        {
+          id: "02db8b2e-f954-4009-8520-10c2d1ae1795",
+          name: "Receptionist",
+          order_by: 610,
+          status: true,
+        },
+        {
+          id: "00bc99dd-5e83-4b52-be7a-a0261b1bb99c",
+          name: "Roller Ops",
+          order_by: 620,
+          status: true,
+        },
+        {
+          id: "c0d980ae-65fd-4e4b-a7b8-ad0af57c11f2",
+          name: "Room Attendants",
+          order_by: 630,
+          status: true,
+        },
+        {
+          id: "66e2c684-36f5-4453-8a38-8990e2e666ed",
+          name: "Safety Officer",
+          order_by: 640,
+          status: true,
+        },
+        {
+          id: "fdd69acc-6bd5-40a5-9dea-230ca5ddae9b",
+          name: "Scaffolder",
+          order_by: 650,
+          status: true,
+        },
+        {
+          id: "2791d08e-628a-4c41-a161-d1983ca69fcd",
+          name: "Secretary",
+          order_by: 660,
+          status: true,
+        },
+        {
+          id: "f8386814-df79-4cbd-be14-4c4f6f09c2bd",
+          name: "Security Guard",
+          order_by: 670,
+          status: true,
+        },
+        {
+          id: "8e41eb3b-d03e-4718-a8cf-74ecf08df4e9",
+          name: "Security Officer",
+          order_by: 680,
+          status: true,
+        },
+        {
+          id: "a2d31c0d-c997-444f-950a-45d1d5c680e7",
+          name: "Security Supervisor",
+          order_by: 690,
+          status: true,
+        },
+        {
+          id: "4fb7977c-79d9-4b3b-96e7-dbcfefd0d91b",
+          name: "Sous Chef",
+          order_by: 700,
+          status: true,
+        },
+        {
+          id: "07b8ed21-4e6e-4356-a29a-9e8c1c7a900f",
+          name: "Steel Fixer",
+          order_by: 710,
+          status: true,
+        },
+        {
+          id: "6c1668f1-6234-4dfd-99a0-41f3d6c0f00f",
+          name: "Storekeeper",
+          order_by: 720,
+          status: true,
+        },
+        {
+          id: "17429d34-0c16-4b3e-b59e-6d0ef33e53f7",
+          name: "Supervisor",
+          order_by: 730,
+          status: true,
+        },
+        {
+          id: "5e1b2d5d-4a03-4a53-bf85-af15d99cac1d",
+          name: "Time Keeper",
+          order_by: 740,
+          status: true,
+        },
+        {
+          id: "73d845cf-6f5a-41b6-a05b-3794e0e4be8c",
+          name: "Tractor Opr",
+          order_by: 750,
+          status: true,
+        },
+        {
+          id: "48b03451-835c-422c-853d-f30b11d58f3b",
+          name: "Waiters",
+          order_by: 760,
+          status: true,
+        },
+        {
+          id: "e0c6e6ef-0f6d-441b-b6b7-e1df8d581880",
+          name: "Waitress/Hostess",
+          order_by: 770,
+          status: true,
+        },
+        {
+          id: "22feab0f-5f74-4cf3-ba30-ff9ace7689d1",
+          name: "Warehouse Worker",
+          order_by: 780,
+          status: true,
+        },
+        {
+          id: "d9b80061-aaeb-4ed0-87c4-fe25625b9dc1",
+          name: "Watch Man",
+          order_by: 790,
+          status: true,
+        },
+      ];
+      return await Sector.bulkCreate(data);
+    }
+    console.log("Sector seed has already been performed");
+  },
+
+  down: async (queryInterface, Sequelize) => {
+    return queryInterface.bulkDelete("sectors", null, {});
+  },
+};

@@ -1,6 +1,6 @@
 import HttpStatus from "http-status-codes";
 import customMessages from "../constants/customMessages";
-import { filterGalleries } from "../filter/gallery";
+import { filterBlogs } from "../filter/blog";
 import { notFound } from "../middlewares/errorHandler";
 import {
   createBlog,
@@ -15,7 +15,7 @@ import { getMetaDetail } from "../utils/reusableUtils";
 
 const blogsController = {
   /**
-   * List of gallery images
+   * List of blog
    */
   async fetchAll(req, res, next) {
     let query = {};
@@ -25,7 +25,7 @@ const blogsController = {
     pageNo = pageNo ? Number(pageNo) : 1;
     limit = limit ? Number(limit) : Number(process.env.APP_PER_PAGE);
 
-    const filterBody = await filterGalleries(req.query);
+    const filterBody = await filterBlogs(req.query);
 
     if (!req.user) {
       filterBody.is_published = true;
@@ -48,23 +48,23 @@ const blogsController = {
   },
 
   /**
-   * show gallery image
+   * show blog
    */
   async show(req, res, next) {
-    const galleryId = req.params.id;
+    const blogId = req.params.id;
 
-    const galleryDetail = await getBlog(galleryId);
+    const blogDetail = await getBlog(blogId);
 
-    if (!galleryDetail) {
-      logger.error(`${customMessages.ERROR_FETCHING_BLOGS_ID} ${galleryId}`);
+    if (!blogDetail) {
+      logger.error(`${customMessages.ERROR_FETCHING_BLOGS_ID} ${blogId}`);
       return notFound(req, res, customMessages.NO_BLOGS_FOUND);
     }
 
-    return res.json({ data: galleryDetail });
+    return res.json({ data: blogDetail });
   },
 
   /**
-   * Create new gallery
+   * Create new blog
    */
 
   async createBlog(req, res, next) {
@@ -108,7 +108,7 @@ const blogsController = {
   },
 
   /**
-   * Delete Gallery Image
+   * Delete Blog
    */
   async deleteBlog(req, res, next) {
     const { id } = req.params;

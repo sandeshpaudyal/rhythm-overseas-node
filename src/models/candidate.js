@@ -145,6 +145,18 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.UUID,
         allowNull: true,
       },
+      other_country: {
+        allowNull: true,
+        type: DataTypes.STRING,
+      },
+      other_job_willing: {
+        allowNull: true,
+        type: DataTypes.STRING,
+      },
+      other_previous_experience: {
+        allowNull: true,
+        type: DataTypes.STRING,
+      },
     },
     {
       defaultScope: {

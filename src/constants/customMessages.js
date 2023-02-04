@@ -70,6 +70,15 @@ const customMessages = {
   FAILURE_BLOGS_UPDATE: "Blog update failed.",
   FAILURE_BLOGS_DELETE: "Unable to delete blog.",
 
+  // sectors
+  ERROR_LISTING_SECTORS: "Error on listing sectors.",
+  ERROR_FETCHING_SECTORS_ID: "Error while fetching sector with ID.",
+  ERROR_CREATING_SECTORS: "Error while creating new sector.",
+  NO_SECTORS_FOUND: "No sector found.",
+  SUCCESS_SECTORS_UPDATE: "Sector updated successfully.",
+  FAILURE_SECTORS_UPDATE: "Sector update failed.",
+  FAILURE_SECTORS_DELETE: "Unable to delete sector.",
+
   // image gallery
   ERROR_LISTING_IMAGES: "Error on listing gallery images.",
   ERROR_FETCHING_IMAGES_ID: "Error while fetching gallery image with ID.",

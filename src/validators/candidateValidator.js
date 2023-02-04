@@ -20,6 +20,15 @@ const createCandidateSchema = Joi.object({
     .label("Secondary Contact Number")
     .allow("", null)
     .optional(),
+  other_country: Joi.string().label("Other Country").allow("", null).optional(),
+  other_job_willing: Joi.string()
+    .label("Other Job Willing")
+    .allow("", null)
+    .optional(),
+  other_previous_experience: Joi.string()
+    .label("Other Previous Experience")
+    .allow("", null)
+    .optional(),
   emergency_contact_relation: Joi.string()
     .label("Emergency Contact Relation")
     .optional(),
@@ -53,6 +62,19 @@ const updateCandidateSchema = Joi.object({
     .optional(),
   emergency_contact_relation: Joi.string()
     .label("Emergency Contact Relation")
+    .optional(),
+  secondary_contact_number: Joi.string()
+    .label("Secondary Contact Number")
+    .allow("", null)
+    .optional(),
+  other_country: Joi.string().label("Other Country").allow("", null).optional(),
+  other_job_willing: Joi.string()
+    .label("Other Job Willing")
+    .allow("", null)
+    .optional(),
+  other_previous_experience: Joi.string()
+    .label("Other Previous Experience")
+    .allow("", null)
     .optional(),
   email: Joi.string().label("Email").optional(),
   job_description: Joi.string().label("Job Description").optional(),
