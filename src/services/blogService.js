@@ -9,8 +9,8 @@ import logger from "../utils/logger";
 export async function getAllBlogs(filterBody, query) {
   return await Blog.findAll({
     where: filterBody,
-    limit: query.limit,
-    offset: query.skip,
+    limit: query?.limit,
+    offset: query?.skip,
   });
 }
 

@@ -17,7 +17,7 @@ router.get("/", validateAuthUser, BlogController.fetchAll);
 /**
  * GET /api/blogs/paginate
  */
-router.get("/list", BlogController.fetchAll);
+router.get("/list", BlogController.list);
 
 /**
  * GET /api/blogs/:id

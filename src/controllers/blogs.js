@@ -27,10 +27,6 @@ const blogsController = {
 
     const filterBody = await filterBlogs(req.query);
 
-    if (!req.user) {
-      filterBody.is_published = true;
-    }
-
     const totalCount = await getAllBlogsCount(filterBody);
 
     // build query for pagination
@@ -41,6 +37,24 @@ const blogsController = {
 
     getAllBlogs(filterBody, query)
       .then((data) => res.json({ data, meta }))
+      .catch((err) => {
+        logger.error(customMessages.ERROR_LISTING_BLOGS);
+        next(err);
+      });
+  },
+
+  /**
+   * List of sectors
+   */
+  async list(req, res, next) {
+    const filterBody = await filterBlogs(req.query);
+
+    if (!req.user) {
+      filterBody.is_published = true;
+    }
+
+    getAllBlogs(filterBody)
+      .then((data) => res.json({ data }))
       .catch((err) => {
         logger.error(customMessages.ERROR_LISTING_BLOGS);
         next(err);

@@ -86,7 +86,7 @@ const galleriesController = {
 
     const getImageDetail = await getGalleryImage(id);
 
-    if (req.files.length > 0) {
+    if (req.files.length > 0 && fs.existsSync(getImageDetail.image)) {
       fs.unlinkSync(getImageDetail.image);
     }
 

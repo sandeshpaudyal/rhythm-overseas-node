@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
         get() {
           return this.getDataValue("image")
             ? this.getDataValue("image").includes("uploads/")
-              ? `${process.env.APP_URL}/${this.getDataValue("image")}`
+              ? `https://rhythmoverseas.com.np/${this.getDataValue("image")}`
               : this.getDataValue("image")
             : null;
         },
