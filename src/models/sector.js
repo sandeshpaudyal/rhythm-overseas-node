@@ -1,8 +1,8 @@
 "use strict";
 
 module.exports = (sequelize, DataTypes) => {
-  const Role = sequelize.define(
-    "Role",
+  const Sector = sequelize.define(
+    "Sector",
     {
       id: {
         type: DataTypes.UUID,
@@ -13,15 +13,25 @@ module.exports = (sequelize, DataTypes) => {
       name: {
         type: DataTypes.STRING,
       },
+      order_by: {
+        type: DataTypes.INTEGER,
+      },
+      image: {
+        type: DataTypes.STRING,
+      },
+      status: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+      },
     },
     {
       defaultScope: {
-        order: [["createdAt", "DESC"]],
+        // order: [["createdAt", "DESC"]],
         attributes: { exclude: ["createdAt", "updatedAt"] },
       },
-      tableName: "roles",
+      tableName: "sectors",
     }
   );
 
-  return Role;
+  return Sector;
 };

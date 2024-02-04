@@ -15,4 +15,6 @@ node_modules
 # Vim swp files
 *.swp
 
+#uploads
+uploads
 

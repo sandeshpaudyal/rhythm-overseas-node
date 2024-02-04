@@ -1,8 +1,8 @@
 "use strict";
 
 module.exports = (sequelize, DataTypes) => {
-  const Role = sequelize.define(
-    "Role",
+  const ImportantLink = sequelize.define(
+    "ImportantLink",
     {
       id: {
         type: DataTypes.UUID,
@@ -12,6 +12,11 @@ module.exports = (sequelize, DataTypes) => {
       },
       name: {
         type: DataTypes.STRING,
+        allowNull: false,
+      },
+      link: {
+        type: DataTypes.STRING,
+        allowNull: false,
       },
     },
     {
@@ -19,9 +24,9 @@ module.exports = (sequelize, DataTypes) => {
         order: [["createdAt", "DESC"]],
         attributes: { exclude: ["createdAt", "updatedAt"] },
       },
-      tableName: "roles",
+      tableName: "important_links",
     }
   );
 
-  return Role;
+  return ImportantLink;
 };
