@@ -5,7 +5,7 @@ name: Node.js deploy to production environment
 
 on:
     push:
-        branches: [main]
+        branches: [master]
 
 jobs:
     build:
@@ -26,6 +26,6 @@ jobs:
             - run: rm -rf node_modules
             - run: yarn install
             - run: cp /var/www/html/.env.backend .env
-            - run: cp -r /var/www/html/uploads/* uploads/
-            - run: docker-compose stop && docker-compose up -d --build
+            - run: cp -r /var/www/html/uploads .
+            - run: docker compose stop && docker compose up -d --build
             # - run: docker exec trackify-svc yarn migrate
